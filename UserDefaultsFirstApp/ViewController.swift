@@ -25,7 +25,11 @@ class ViewController: UIViewController {
 //            userNameLabel.text = user.fullName
 //        }
         
-        user = StorageManager.shared.fetchUser()
+        // Восстановление из UserDefaults
+//        user = StorageManager.shared.fetchUser()
+        
+        // Restore from Plist
+        user = StorageManager.shared.fetchUserFromFile()
         userNameLabel.text = user.fullName
     }
 
@@ -49,13 +53,12 @@ class ViewController: UIViewController {
             user.surname = secondName
             userNameLabel.text = user.fullName
             
-            StorageManager.shared.saveUser(user)
+            //StorageManager.shared.saveUser(user)
+            StorageManager.shared.saveUserToFile(user)
         }
-        
         
         firstNameTextField.text = nil
         secondNameTextField.text = nil
-        
     }
 
 }
